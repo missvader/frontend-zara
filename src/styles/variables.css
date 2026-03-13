@@ -1,0 +1,33 @@
+:root {
+  /* Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-black-secondary: #1b1a18;
+  --color-gray-light: #f2f2f2;
+  --color-gray-medium: #cccccc;
+  --color-gray-dark: #313131;
+  --color-gray-text: #79736d;
+  --color-error: #df0000;
+  --color-border: #000000;
+  --color-border-light: #cccccc;
+
+  /* Typography */
+  --font-primary: Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --layout-max-width: 1920px;
+  --layout-content-width: 1200px;
+  --header-height: 80px;
+  --header-height-mobile: 60px;
+
+  /* Spacing */
+  --spacing-desktop: 100px;
+  --spacing-tablet: 40px;
+  --spacing-mobile: 16px;
+
+  /* Borders */
+  --border-width: 0.5px;
+
+  /* Transitions */
+  --transition-smooth: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
