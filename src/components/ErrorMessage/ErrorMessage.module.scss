@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-mobile);
+}
+
+.message {
+  font-size: 14px;
+  color: var(--color-error);
+  text-align: center;
+}

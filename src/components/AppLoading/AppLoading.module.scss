@@ -1,0 +1,23 @@
+.loadingBar {
+  position: sticky;
+  top: var(--header-height);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-black) 0%,
+    var(--color-gray-medium) 50%,
+    var(--color-black) 100%
+  );
+  background-size: 200% 100%;
+  animation: loadingSlide 1.2s linear infinite;
+  z-index: 99;
+}
+
+@keyframes loadingSlide {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
