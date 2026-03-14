@@ -14,4 +14,8 @@ describe('toHttps', () => {
     expect(toHttps('not-a-url')).toBe('not-a-url')
     expect(toHttps('')).toBe('')
   })
+
+  it('returns empty string for undefined', () => {
+    expect(toHttps(undefined)).toBe('')
+  })
 })

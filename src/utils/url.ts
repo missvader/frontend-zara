@@ -1,1 +1,2 @@
-export const toHttps = (url: string): string => url.replace(/^http:\/\//, 'https://')
+export const toHttps = (url: string | undefined): string =>
+  url ? url.replace(/^http:\/\//, 'https://') : ''

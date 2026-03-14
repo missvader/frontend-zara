@@ -1,0 +1,26 @@
+.section {
+  padding: 48px 0 0;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  gap: var(--border-width);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-medium) transparent;
+}
+
+.item {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}

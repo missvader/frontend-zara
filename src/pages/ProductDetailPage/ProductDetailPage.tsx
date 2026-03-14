@@ -3,6 +3,10 @@ import { Navbar } from '@/components/Navbar/Navbar'
 import { AppLoading } from '@/components/AppLoading/AppLoading'
 import { ErrorMessage } from '@/components/ErrorMessage/ErrorMessage'
 import { Button } from '@/components/Button/Button'
+import { ColorSelector } from '@/components/ColorSelector/ColorSelector'
+import { StorageSelector } from '@/components/StorageSelector/StorageSelector'
+import { SpecificationsTable } from '@/components/SpecificationsTable/SpecificationsTable'
+import { SimilarProducts } from '@/components/SimilarProducts/SimilarProducts'
 import { toHttps } from '@/utils/url'
 import { useProductDetailController } from './ProductDetailPage.controller'
 import styles from './ProductDetailPage.module.scss'
@@ -33,6 +37,7 @@ const ProductDetailPage = () => {
 
   const minPrice = Math.min(...product.storageOptions.map((s) => s.price))
   const displayPrice = selectedStorage ? selectedStorage.price : null
+  const fallbackImageUrl = product.imageUrl ?? product.colorOptions[0]?.imageUrl
 
   return (
     <>
@@ -50,8 +55,8 @@ const ProductDetailPage = () => {
         <div className={styles.productRow}>
           <div className={styles.imageCol}>
             <img
-              key={toHttps(selectedColor?.imageUrl ?? product.imageUrl)}
-              src={toHttps(selectedColor?.imageUrl ?? product.imageUrl)}
+              key={toHttps(selectedColor?.imageUrl ?? fallbackImageUrl)}
+              src={toHttps(selectedColor?.imageUrl ?? fallbackImageUrl)}
               alt={`${product.brand} ${product.name}`}
               className={styles.mainImage}
             />
@@ -67,44 +72,17 @@ const ProductDetailPage = () => {
                 : `FROM ${minPrice.toLocaleString('de-DE')} EUR`}
             </p>
 
-            {/* Color selector */}
-            <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>
-                Color: {selectedColor ? selectedColor.name : 'Pick your favourite'}
-              </legend>
-              <div className={styles.swatches}>
-                {product.colorOptions.map((color) => (
-                  <button
-                    key={color.name}
-                    type="button"
-                    aria-label={`Select color ${color.name}`}
-                    aria-pressed={selectedColor?.name === color.name}
-                    className={`${styles.swatch} ${selectedColor?.name === color.name ? styles.swatchSelected : ''}`}
-                    style={{ backgroundColor: color.hexCode }}
-                    onClick={() => handleColorChange(color)}
-                  />
-                ))}
-              </div>
-            </fieldset>
+            <ColorSelector
+              colors={product.colorOptions}
+              selected={selectedColor}
+              onChange={handleColorChange}
+            />
 
-            {/* Storage selector */}
-            <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>Storage: How much space do you need?</legend>
-              <div className={styles.storageOptions}>
-                {product.storageOptions.map((option) => (
-                  <button
-                    key={option.capacity}
-                    type="button"
-                    aria-label={`Select ${option.capacity}, ${option.price} EUR`}
-                    aria-pressed={selectedStorage?.capacity === option.capacity}
-                    className={`${styles.storageBtn} ${selectedStorage?.capacity === option.capacity ? styles.storageBtnSelected : ''}`}
-                    onClick={() => handleStorageChange(option)}
-                  >
-                    {option.capacity}
-                  </button>
-                ))}
-              </div>
-            </fieldset>
+            <StorageSelector
+              options={product.storageOptions}
+              selected={selectedStorage}
+              onChange={handleStorageChange}
+            />
 
             <Button
               variant="primary"
@@ -117,48 +95,17 @@ const ProductDetailPage = () => {
           </div>
         </div>
 
-        {/* Specs */}
         <section className={styles.specs} aria-label="Specifications">
           <h2 className={styles.sectionTitle}>SPECIFICATIONS</h2>
-          <dl className={styles.specsList}>
-            {Object.entries(product.specs).map(([key, value]) => (
-              <div key={key} className={styles.specRow}>
-                <dt className={styles.specKey}>{key}</dt>
-                <dd className={styles.specValue}>{value}</dd>
-              </div>
-            ))}
-          </dl>
+          <SpecificationsTable specs={product.specs} />
         </section>
 
-        {/* Similar products */}
         {product.similarProducts.length > 0 && (
-          <section className={styles.similar} aria-label="Similar products">
-            <h2 className={styles.sectionTitle}>SIMILAR ITEMS</h2>
-            <ul className={styles.similarList}>
-              {product.similarProducts.map((similar) => (
-                <li key={similar.id}>
-                  <button
-                    type="button"
-                    className={styles.similarCard}
-                    onClick={() => navigate(`/product/${similar.id}`)}
-                    aria-label={`${similar.brand} ${similar.name}`}
-                  >
-                    <img
-                      src={toHttps(similar.imageUrl)}
-                      alt={`${similar.brand} ${similar.name}`}
-                      className={styles.similarImg}
-                      loading="lazy"
-                    />
-                    <p className={styles.similarBrand}>{similar.brand.toUpperCase()}</p>
-                    <p className={styles.similarName}>{similar.name}</p>
-                    <p className={styles.similarPrice}>
-                      {similar.basePrice.toLocaleString('de-DE')} EUR
-                    </p>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <SimilarProducts
+            products={product.similarProducts}
+            productId={product.id}
+            onCardClick={(id) => navigate(`/product/${id}`)}
+          />
         )}
       </main>
     </>
