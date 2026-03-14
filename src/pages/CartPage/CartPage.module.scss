@@ -107,11 +107,6 @@ $spring-easing: linear(
 }
 
 .itemRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 24px 0;
-  border-bottom: var(--border-width) solid var(--color-border-light);
   transition:
     opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -120,49 +115,6 @@ $spring-easing: linear(
 .itemRow.fadeOut {
   opacity: 0;
   transform: scale(0.9);
-}
-
-.itemInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.itemBrand {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--color-gray-text);
-}
-
-.itemName {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.itemMeta {
-  font-size: 13px;
-  color: var(--color-gray-text);
-}
-
-.itemPrice {
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 4px;
-}
-
-.removeBtn {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  color: var(--color-black);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  flex-shrink: 0;
 }
 
 .footer {

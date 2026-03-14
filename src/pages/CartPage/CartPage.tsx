@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar/Navbar'
 import { Button } from '@/components/Button/Button'
+import { CartItem } from '@/components/CartItem/CartItem'
 import { useCart } from '@/hooks/useCart'
 import { usePageTitle } from '@/hooks/usePageTitle'
 import styles from './CartPage.module.scss'
@@ -46,22 +47,10 @@ const CartPage = () => {
                 const isFading = removingId === key
                 return (
                   <li key={key} className={`${styles.itemRow} ${isFading ? styles.fadeOut : ''}`}>
-                    <div className={styles.itemInfo}>
-                      <p className={styles.itemBrand}>{item.brand.toUpperCase()}</p>
-                      <p className={styles.itemName}>{item.name}</p>
-                      <p className={styles.itemMeta}>
-                        {item.color.name} · {item.storage.capacity}
-                      </p>
-                      <p className={styles.itemPrice}>{item.price.toLocaleString('de-DE')} EUR</p>
-                    </div>
-                    <button
-                      type="button"
-                      aria-label={`Remove ${item.name} from cart`}
-                      className={styles.removeBtn}
-                      onClick={() => handleRemove(item.id, item.color.name, item.storage.capacity)}
-                    >
-                      Eliminar
-                    </button>
+                    <CartItem
+                      item={item}
+                      onRemove={() => handleRemove(item.id, item.color.name, item.storage.capacity)}
+                    />
                   </li>
                 )
               })}
