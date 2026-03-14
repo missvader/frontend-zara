@@ -1,0 +1,13 @@
+.page {
+  max-width: var(--layout-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-desktop);
+
+  @media (max-width: 1024px) {
+    padding: 0 var(--spacing-tablet);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 var(--spacing-mobile);
+  }
+}
