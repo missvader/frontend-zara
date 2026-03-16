@@ -178,12 +178,17 @@ $spring-easing: linear(
   text-transform: uppercase;
   color: var(--color-black);
   flex-shrink: 0;
+  flex: 1;
+  justify-content: flex-end;
+  padding-right: 3vw;
 
   @media (max-width: 768px) {
     /* bp-md */
     order: -1;
     width: 100%;
+    flex: auto;
     justify-content: space-between;
+    padding-right: 0;
   }
 }
 
