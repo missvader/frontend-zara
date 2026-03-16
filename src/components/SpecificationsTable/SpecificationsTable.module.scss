@@ -8,9 +8,9 @@
 .row {
   display: grid;
   grid-template-columns: 30% 70%;
-  gap: 16px;
+  gap: var(--spacing-md);
   align-items: baseline;
-  padding: 12px 0;
+  padding: var(--spacing-md) 0;
   border-bottom: var(--border-width) solid var(--color-border);
 }
 
@@ -18,9 +18,13 @@
   border-top: var(--border-width) solid var(--color-border);
 }
 
+.row:last-of-type {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
 .term {
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
   color: var(--color-black);
   text-transform: uppercase;
@@ -30,7 +34,7 @@
 .detail {
   margin: 0;
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
   color: var(--color-black);
 }

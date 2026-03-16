@@ -73,26 +73,14 @@ $spring-easing: linear(
 .page {
   display: flex;
   flex-direction: column;
-  background: var(--color-white);
-}
-
-/* Back bar: sticky, Container full gestiona el padding lateral */
-.backBar {
-  position: sticky;
-  top: var(--header-height);
-  z-index: 90;
-  background: var(--color-white);
-
-  @media (max-width: 480px) {
-    top: var(--header-height-mobile);
-  }
 }
 
 .backBtn {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 12px 0;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding: 0;
   border: 0;
   background: none;
   cursor: pointer;
@@ -113,184 +101,112 @@ $spring-easing: linear(
 .backLabel {
   color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-md);
   font-weight: 300;
-  line-height: normal;
   text-transform: uppercase;
 }
 
-/* Product row: flex con anchos fijos exactos del Figma */
-.productRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 170px;
-  width: 100%;
-  padding-top: 24px;
-  padding-bottom: 104px;
+.wrapper {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
   opacity: 0;
   animation: dissolveIn $spring-easing 0.6s forwards;
   animation-delay: 1ms;
+}
 
-  @media (max-width: 1024px) {
-    gap: 40px;
-    padding-bottom: 64px;
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: var(--spacing-xl);
   }
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 24px;
-    padding-bottom: 40px;
-    align-items: flex-start;
+  @media (min-width: 900px) {
+    gap: 10vw;
   }
 }
 
-/* Imagen: 510x630px exactos del Figma */
-.imageCol {
-  flex: 0 0 510px;
-  height: 630px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 1;
   overflow: hidden;
-
-  @media (max-width: 1024px) {
-    flex: 0 0 337px;
-    height: auto;
-    aspect-ratio: 337 / 414;
-  }
-
-  @media (max-width: 768px) {
-    flex: none;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-  }
 }
 
-.mainImage {
+.image {
   width: 100%;
   height: 100%;
   object-fit: contain;
   animation: imageDissolveIn 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Info column: 380px exactos del Figma */
-.infoCol {
-  flex: 0 0 380px;
+.infoColumn {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 64px;
-
-  @media (max-width: 1024px) {
-    flex: 1;
-    gap: 40px;
-    min-width: 0;
-  }
-
-  @media (max-width: 768px) {
-    flex: none;
-    width: 100%;
-    gap: 24px;
-  }
+  gap: var(--spacing-xl);
+  min-width: 0;
 }
 
-/* Title + price: gap 11px del Figma */
-.titlePrice {
+.info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 11px;
-  align-self: stretch;
+  gap: var(--spacing-sm);
 }
 
 .brand {
   margin: 0;
   font-family: var(--font-primary);
-  font-size: 10px;
+  font-size: var(--font-size-sm);
   font-weight: 300;
   text-transform: uppercase;
   color: var(--color-gray-text);
 }
 
-/* Título: 24px/300/uppercase del Figma */
 .name {
   margin: 0;
-  width: 380px;
   color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 24px;
+  font-size: var(--font-size-3xl);
   font-weight: 300;
-  line-height: 29px;
+  line-height: 1.2;
   text-transform: uppercase;
-
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-    line-height: normal;
-  }
 }
 
-/* Precio: 20px/300/capitalize del Figma */
 .price {
   margin: 0;
-  color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: var(--font-size-2xl);
   font-weight: 300;
-  line-height: 24px;
-  text-transform: capitalize;
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+  color: var(--color-black);
 }
 
-/* Selectors: gap 40px del Figma */
 .selectors {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    gap: 24px;
-  }
+  gap: var(--spacing-xl);
 }
 
-/* Add to cart: 380x56px, padding 20px 32px del Figma */
 .addBtn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 32px;
-  width: 380px;
-  height: 56px;
-  border: 0;
-  background: #f3f2f2; /* disabled state del Figma */
-  color: #c2bfbc; /* disabled color del Figma */
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  background: #f3f2f2;
+  color: #c2bfbc;
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  line-height: 16px;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  cursor: default;
-  align-self: stretch;
+  min-width: 260px;
+  text-align: center;
+  cursor: not-allowed;
+  transition: all 0.3s ease-in-out;
 
-  @media (max-width: 1024px) {
-    width: 260px;
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
+    min-width: 0;
     width: 100%;
+    padding: var(--spacing-md);
   }
 }
 
@@ -298,30 +214,24 @@ $spring-easing: linear(
   background: var(--color-black);
   color: var(--color-white);
   cursor: pointer;
-}
 
-/* Specs: debajo del productRow, mismo Container */
-.specs {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding-bottom: 104px;
-  opacity: 0;
-  animation: dissolveIn $spring-easing 0.6s forwards;
-  animation-delay: 50ms;
-
-  @media (max-width: 768px) {
-    padding-bottom: 48px;
-    gap: 24px;
+  &:hover {
+    opacity: 0.8;
   }
 }
 
+.specs {
+  margin-top: var(--spacing-2xl);
+  opacity: 0;
+  animation: dissolveIn $spring-easing 0.6s forwards;
+  animation-delay: 50ms;
+}
+
 .sectionTitle {
-  margin: 0;
+  margin: 0 0 var(--spacing-lg);
   color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: var(--font-size-2xl);
   font-weight: 300;
-  line-height: normal;
   text-transform: uppercase;
 }

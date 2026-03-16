@@ -5,14 +5,8 @@
   height: var(--header-height);
   background: var(--color-white);
   box-sizing: border-box;
-
-  @media (max-width: 480px) {
-    height: var(--header-height-mobile);
-  }
 }
 
-/* Container gestiona el padding y max-width */
-/* Solo añadir lo que Container no puede gestionar solo */
 .inner {
   display: flex;
   flex-direction: row;
@@ -46,16 +40,15 @@
   justify-content: center;
   align-items: center;
   padding: 4px 0;
-  gap: 6px;
+  gap: var(--spacing-xs);
 }
 
 .cartCount {
   color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-size-lg);
   font-weight: 300;
-  line-height: 16px;
-  margin-top: 1px;
+  line-height: 1;
   text-transform: uppercase;
   flex: none;
 }

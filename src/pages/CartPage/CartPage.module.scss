@@ -61,66 +61,41 @@ $spring-easing: linear(
   }
 }
 
-/* Container gestiona max-width y padding lateral */
 .page {
-  min-height: calc(100vh - var(--header-height));
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
   display: flex;
   flex-direction: column;
-  background: var(--color-white);
-
-  @media (max-width: 480px) {
-    min-height: calc(100vh - var(--header-height-mobile));
-  }
-}
-
-.titleBar {
-  padding: 12px 0;
-  position: sticky;
-  top: var(--header-height);
-  z-index: 90;
-  background: var(--color-white);
+  min-height: calc(100vh - var(--header-height));
   opacity: 0;
   animation: dissolveIn $spring-easing 0.6s forwards;
   animation-delay: 1ms;
-
-  @media (max-width: 480px) {
-    top: var(--header-height-mobile);
-    padding: 24px 0;
-  }
 }
 
 .title {
-  margin: 0;
+  margin: 0 0 var(--spacing-xl);
   color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 24px;
-  font-weight: 100;
-  line-height: 100%;
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .empty {
-  display: flex;
-  justify-content: flex-start;
-  padding: 40px 0;
   flex: 1;
-  opacity: 0;
-  animation: dissolveIn $spring-easing 0.6s forwards;
-  animation-delay: 50ms;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--spacing-xl);
 }
 
-.itemsArea {
-  padding-top: 48px;
+.itemsList {
   flex: 1;
   list-style: none;
   margin: 0;
-  opacity: 0;
-  animation: dissolveIn $spring-easing 0.6s forwards;
-  animation-delay: 50ms;
-
-  @media (max-width: 480px) {
-    padding-top: 24px;
-  }
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .itemRow {
@@ -135,112 +110,93 @@ $spring-easing: linear(
 }
 
 .footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
   display: flex;
-  justify-content: space-between;
-  position: sticky;
-  bottom: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 24px 0;
-  background: var(--color-white);
-  opacity: 0;
-  animation: dissolveIn $spring-easing 0.6s forwards;
-  animation-delay: 100ms;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  border-top: var(--border-width) solid var(--color-border);
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     flex-direction: column;
-    padding: 16px 0 24px;
-    gap: 24px;
     align-items: stretch;
   }
 }
 
 .totalRow {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  gap: var(--spacing-lg);
+  flex: 1;
+  justify-content: flex-end;
   font-family: var(--font-primary);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 100%;
+  font-size: var(--font-size-base);
+  font-weight: 300;
   text-transform: uppercase;
   color: var(--color-black);
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     justify-content: space-between;
   }
 }
 
 .actions {
   display: flex;
-  align-items: center;
-  gap: 80px;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
 
-  @media (max-width: 1024px) {
-    gap: 56px;
-  }
-
-  @media (max-width: 480px) {
-    gap: 12px;
+  @media (max-width: 900px) {
+    width: 100%;
   }
 }
 
 .continueButton {
-  display: inline-flex;
-  width: 260px;
-  height: 56px;
-  padding: 5px 7px;
-  align-items: center;
-  justify-content: center;
-  border: var(--border-width) solid var(--color-black-secondary);
-  color: var(--color-black);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: var(--border-width) solid var(--color-black);
   background: transparent;
+  color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
+  min-width: 200px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 
-  @media (max-width: 1024px) {
-    width: 200px;
-    height: 48px;
+  &:hover {
+    background: var(--color-black);
+    color: var(--color-white);
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     flex: 1;
-    height: 48px;
-    width: auto;
-    white-space: nowrap;
+    min-width: 0;
   }
 }
 
 .payButton {
-  display: inline-flex;
-  width: 260px;
-  height: 56px;
-  padding: 5px 7px;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-black-secondary);
+  padding: var(--spacing-md) var(--spacing-xl);
   border: none;
-  cursor: pointer;
+  background: var(--color-black);
   color: var(--color-white);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
+  cursor: pointer;
+  min-width: 200px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 
-  @media (max-width: 1024px) {
-    width: 260px;
-    height: 48px;
+  &:hover {
+    opacity: 0.8;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     flex: 1;
-    height: 48px;
-    width: auto;
-    font-size: 12px;
-    white-space: nowrap;
+    min-width: 0;
   }
 }

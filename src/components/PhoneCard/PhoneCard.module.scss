@@ -1,24 +1,19 @@
+/* El article es el wrapper visual */
 .card {
-  width: 100%;
-  height: 344px;
-  padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  isolation: isolate;
-  outline: var(--border-width) solid var(--color-black);
-  text-decoration: none;
-  box-sizing: border-box;
-  color: var(--color-black);
   position: relative;
+  aspect-ratio: 1;
+  padding: var(--spacing-md);
+  box-sizing: border-box;
   overflow: hidden;
+  outline: var(--border-width) solid var(--color-black);
   background: var(--color-white);
-  touch-action: manipulation;
-  border: none;
   cursor: pointer;
+  border: none;
   text-align: left;
+  color: var(--color-black);
+  touch-action: manipulation;
 }
 
 .card::before {
@@ -31,6 +26,7 @@
   background: var(--color-black);
   transition: height 140ms ease-in;
   z-index: 0;
+  pointer-events: none;
 }
 
 @media (hover: hover) {
@@ -48,7 +44,6 @@
 
 .card:focus-visible::before {
   height: 100%;
-  transition: height 500ms ease-out;
 }
 
 .card:focus-visible .brand,
@@ -62,110 +57,85 @@
   outline-offset: 2px;
 }
 
-.imageWrapper,
-.info {
+/* Botón interior ocupa todo el card */
+.cardBtn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
   position: relative;
   z-index: 1;
 }
 
 .imageWrapper {
-  width: 100%;
-  height: 257px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  z-index: 1;
+  flex: 1;
 }
 
 .image {
-  max-width: 100%;
-  max-height: 210px;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  display: block;
 }
 
 .info {
   display: flex;
+  justify-content: space-between;
   align-items: flex-end;
-  gap: 8px;
-  align-self: stretch;
+  gap: var(--spacing-xs);
+  padding-top: var(--spacing-md);
+  z-index: 1;
 }
 
 .brandName {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  flex: 1 0 0;
+  gap: var(--spacing-xs);
+  flex: 1;
+  min-width: 0;
 }
 
 .brand {
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-family: var(--font-primary);
-  font-size: 10px;
+  font-size: var(--font-size-sm);
   font-weight: 300;
-  line-height: normal;
   text-transform: uppercase;
   color: var(--color-gray-text);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  align-self: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   transition: color 180ms ease;
 }
 
 .name {
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  line-height: normal;
+  line-height: 1.2;
   text-transform: uppercase;
   color: var(--color-black);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  align-self: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   transition: color 180ms ease;
 }
 
 .price {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  line-height: normal;
   text-transform: capitalize;
   color: var(--color-black);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: color 180ms ease;
-}
-
-@media (max-width: 1024px) {
-  .card {
-    height: 377px;
-  }
-  .imageWrapper {
-    height: 290px;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    height: 344px;
-  }
-  .imageWrapper {
-    height: 257px;
-  }
 }

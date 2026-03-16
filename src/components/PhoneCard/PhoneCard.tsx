@@ -11,27 +11,29 @@ export const PhoneCard = ({ product, onClick }: PhoneCardProps) => {
   const { id, brand, name, basePrice, imageUrl } = product
 
   return (
-    <button
-      type="button"
-      className={styles.card}
-      aria-label={`${brand} ${name}, from ${basePrice} EUR`}
-      onClick={() => onClick(id)}
-    >
-      <div className={styles.imageWrapper}>
-        <img
-          src={toHttps(imageUrl)}
-          alt={`${brand} ${name}`}
-          className={styles.image}
-          loading="lazy"
-        />
-      </div>
-      <div className={styles.info}>
-        <div className={styles.brandName}>
-          <div className={styles.brand}>{brand.toUpperCase()}</div>
-          <div className={styles.name}>{name}</div>
+    <article className={styles.card}>
+      <button
+        type="button"
+        className={styles.cardBtn}
+        aria-label={`${brand} ${name}, from ${basePrice} EUR`}
+        onClick={() => onClick(id)}
+      >
+        <div className={styles.imageWrapper}>
+          <img
+            src={toHttps(imageUrl)}
+            alt={`${brand} ${name}`}
+            className={styles.image}
+            loading="lazy"
+          />
         </div>
-        <div className={styles.price}>{basePrice.toLocaleString('de-DE')} EUR</div>
-      </div>
-    </button>
+        <div className={styles.info}>
+          <div className={styles.brandName}>
+            <span className={styles.brand}>{brand.toUpperCase()}</span>
+            <span className={styles.name}>{name}</span>
+          </div>
+          <span className={styles.price}>{basePrice.toLocaleString('de-DE')} EUR</span>
+        </div>
+      </button>
+    </article>
   )
 }

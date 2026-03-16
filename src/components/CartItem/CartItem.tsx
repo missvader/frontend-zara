@@ -9,27 +9,31 @@ interface CartItemProps {
 
 export const CartItem = ({ item, onRemove }: CartItemProps) => (
   <div className={styles.wrapper}>
-    <img
-      src={toHttps(item.imageUrl)}
-      alt={`${item.brand} ${item.name}`}
-      className={styles.image}
-      loading="lazy"
-    />
-    <div className={styles.info}>
-      <p className={styles.brand}>{item.brand.toUpperCase()}</p>
-      <p className={styles.name}>{item.name}</p>
-      <p className={styles.meta}>
-        {item.color.name} · {item.storage.capacity}
-      </p>
-      <p className={styles.price}>{item.price.toLocaleString('de-DE')} EUR</p>
+    <div className={styles.imageWrapper}>
+      <img
+        src={toHttps(item.imageUrl)}
+        alt={`${item.brand} ${item.name}`}
+        className={styles.image}
+        loading="lazy"
+      />
     </div>
-    <button
-      type="button"
-      aria-label={`Remove ${item.name} from cart`}
-      className={styles.removeBtn}
-      onClick={onRemove}
-    >
-      Eliminar
-    </button>
+    <div className={styles.info}>
+      <div>
+        <p className={styles.brand}>{item.brand.toUpperCase()}</p>
+        <p className={styles.name}>{item.name}</p>
+        <p className={styles.meta}>
+          {item.color.name} · {item.storage.capacity}
+        </p>
+        <p className={styles.price}>{item.price.toLocaleString('de-DE')} EUR</p>
+      </div>
+      <button
+        type="button"
+        aria-label={`Remove ${item.name} from cart`}
+        className={styles.removeBtn}
+        onClick={onRemove}
+      >
+        Eliminar
+      </button>
+    </div>
   </div>
 )

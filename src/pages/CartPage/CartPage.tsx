@@ -29,9 +29,7 @@ const CartPage = () => {
     <>
       <Navbar />
       <Container as="main" className={styles.page}>
-        <div className={styles.titleBar}>
-          <h1 className={styles.title}>CART ({cart.items.length})</h1>
-        </div>
+        <h1 className={styles.title}>CART ({cart.items.length})</h1>
 
         {cart.items.length === 0 ? (
           <div className={styles.empty}>
@@ -41,7 +39,7 @@ const CartPage = () => {
           </div>
         ) : (
           <>
-            <ul className={styles.itemsArea}>
+            <ul className={styles.itemsList}>
               {cart.items.map((item) => {
                 const key = `${item.id}-${item.color.name}-${item.storage.capacity}`
                 const isFading = removingId === key

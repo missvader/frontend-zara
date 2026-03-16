@@ -17,7 +17,7 @@ export const PhoneGrid = ({ products, isLoading, onCardClick }: PhoneGridProps) 
       className={`${styles.grid} ${styles.gridEnterOnce} ${isLoading ? styles.gridLoading : ''}`}
     >
       {products.map((product) => (
-        <li key={product.id} role="article">
+        <li key={product.id}>
           <PhoneCard product={product} onClick={onCardClick} />
         </li>
       ))}
