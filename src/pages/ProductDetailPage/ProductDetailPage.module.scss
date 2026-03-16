@@ -70,21 +70,18 @@ $spring-easing: linear(
   }
 }
 
-/* El main ya no gestiona padding ni max-width */
 .page {
   display: flex;
   flex-direction: column;
   background: var(--color-white);
 }
 
-/* Back bar: sticky bajo el header */
+/* Back bar: sticky, Container full gestiona el padding lateral */
 .backBar {
   position: sticky;
   top: var(--header-height);
   z-index: 90;
   background: var(--color-white);
-  padding-top: 12px;
-  padding-bottom: 12px;
 
   @media (max-width: 480px) {
     top: var(--header-height-mobile);
@@ -95,16 +92,22 @@ $spring-easing: linear(
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 0;
+  padding: 12px 0;
   border: 0;
   background: none;
   cursor: pointer;
+}
+
+.backBtn:hover .backIcon,
+.backBtn:focus .backIcon {
+  transform: translateX(-5px);
 }
 
 .backIcon {
   width: 20px;
   height: 20px;
   display: block;
+  transition: transform 0.3s ease-in-out;
 }
 
 .backLabel {
@@ -116,12 +119,14 @@ $spring-easing: linear(
   text-transform: uppercase;
 }
 
-/* Product row: flex con anchos fijos */
+/* Product row: flex con anchos fijos exactos del Figma */
 .productRow {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
-  gap: 40px;
+  align-items: center;
+  gap: 170px;
+  width: 100%;
   padding-top: 24px;
   padding-bottom: 104px;
   opacity: 0;
@@ -129,31 +134,38 @@ $spring-easing: linear(
   animation-delay: 1ms;
 
   @media (max-width: 1024px) {
-    padding-bottom: 64px;
     gap: 40px;
+    padding-bottom: 64px;
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 24px;
     padding-bottom: 40px;
+    align-items: flex-start;
   }
 }
 
+/* Imagen: 510x630px exactos del Figma */
 .imageCol {
   flex: 0 0 510px;
+  height: 630px;
   display: flex;
-  flex-direction: column;
-  background: var(--color-white);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
   @media (max-width: 1024px) {
     flex: 0 0 337px;
+    height: auto;
+    aspect-ratio: 337 / 414;
   }
 
   @media (max-width: 768px) {
     flex: none;
     width: 100%;
-    align-items: center;
+    height: auto;
+    aspect-ratio: 1;
   }
 }
 
@@ -161,21 +173,10 @@ $spring-easing: linear(
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 0;
-  background: transparent;
   animation: imageDissolveIn 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-
-  @media (max-width: 1024px) {
-    aspect-ratio: 336 / 414;
-    height: auto;
-  }
-
-  @media (max-width: 768px) {
-    width: 260px;
-    aspect-ratio: 260 / 273;
-  }
 }
 
+/* Info column: 380px exactos del Figma */
 .infoCol {
   flex: 0 0 380px;
   display: flex;
@@ -186,6 +187,7 @@ $spring-easing: linear(
   @media (max-width: 1024px) {
     flex: 1;
     gap: 40px;
+    min-width: 0;
   }
 
   @media (max-width: 768px) {
@@ -195,6 +197,7 @@ $spring-easing: linear(
   }
 }
 
+/* Title + price: gap 11px del Figma */
 .titlePrice {
   display: flex;
   flex-direction: column;
@@ -212,38 +215,43 @@ $spring-easing: linear(
   color: var(--color-gray-text);
 }
 
+/* Título: 24px/300/uppercase del Figma */
 .name {
   margin: 0;
+  width: 380px;
   color: var(--color-black);
   font-family: var(--font-primary);
   font-size: 24px;
   font-weight: 300;
-  line-height: normal;
+  line-height: 29px;
   text-transform: uppercase;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 
   @media (max-width: 768px) {
     font-size: 20px;
+    line-height: normal;
   }
 }
 
+/* Precio: 20px/300/capitalize del Figma */
 .price {
   margin: 0;
   color: var(--color-black);
   font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 300;
-  line-height: normal;
+  line-height: 24px;
   text-transform: capitalize;
 
-  @media (max-width: 1024px) {
-    font-size: 17px;
-  }
-
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
+/* Selectors: gap 40px del Figma */
 .selectors {
   display: flex;
   flex-direction: column;
@@ -251,36 +259,38 @@ $spring-easing: linear(
   gap: 40px;
 
   @media (max-width: 768px) {
-    gap: 24px;
     width: 100%;
+    gap: 24px;
   }
 }
 
+/* Add to cart: 380x56px, padding 20px 32px del Figma */
 .addBtn {
   display: flex;
-  width: 380px;
-  height: 64px;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 20px 32px;
+  width: 380px;
+  height: 56px;
   border: 0;
-  background: var(--color-gray-light);
-  color: #b3b3b3;
+  background: #f3f2f2; /* disabled state del Figma */
+  color: #c2bfbc; /* disabled color del Figma */
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
-  line-height: normal;
+  line-height: 16px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: default;
+  align-self: stretch;
 
   @media (max-width: 1024px) {
     width: 260px;
-    height: 48px;
   }
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 48px;
-    font-size: 12px;
   }
 }
 
@@ -290,11 +300,10 @@ $spring-easing: linear(
   cursor: pointer;
 }
 
-/* Specs */
+/* Specs: debajo del productRow, mismo Container */
 .specs {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 40px;
   padding-bottom: 104px;
   opacity: 0;
@@ -303,17 +312,16 @@ $spring-easing: linear(
 
   @media (max-width: 768px) {
     padding-bottom: 48px;
+    gap: 24px;
   }
 }
 
 .sectionTitle {
-  align-self: stretch;
   margin: 0;
   color: var(--color-black);
   font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 300;
   line-height: normal;
-  text-transform: capitalize;
-  letter-spacing: 0;
+  text-transform: uppercase;
 }

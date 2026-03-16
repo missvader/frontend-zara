@@ -57,8 +57,9 @@ const ProductDetailPage = () => {
           </button>
         </Container>
 
-        {/* Product row */}
-        <Container>
+        {/* Contenido principal: Container size="content" (max-width 1200px) */}
+        <Container size="content" as="section" aria-labelledby="product-name">
+          {/* Product row */}
           <div className={styles.productRow}>
             <div className={styles.imageCol}>
               <img
@@ -72,7 +73,7 @@ const ProductDetailPage = () => {
             <div className={styles.infoCol}>
               <div className={styles.titlePrice}>
                 <p className={styles.brand}>{product.brand.toUpperCase()}</p>
-                <h1 className={styles.name}>
+                <h1 id="product-name" className={styles.name}>
                   {product.brand} {product.name}
                 </h1>
                 <p className={styles.price}>
@@ -83,15 +84,15 @@ const ProductDetailPage = () => {
               </div>
 
               <div className={styles.selectors}>
-                <ColorSelector
-                  colors={product.colorOptions}
-                  selected={selectedColor}
-                  onChange={handleColorChange}
-                />
                 <StorageSelector
                   options={product.storageOptions}
                   selected={selectedStorage}
                   onChange={handleStorageChange}
+                />
+                <ColorSelector
+                  colors={product.colorOptions}
+                  selected={selectedColor}
+                  onChange={handleColorChange}
                 />
               </div>
 
@@ -106,26 +107,22 @@ const ProductDetailPage = () => {
               </button>
             </div>
           </div>
-        </Container>
 
-        {/* Specs */}
-        <Container>
+          {/* Specs: dentro del mismo Container que el productRow */}
           <section className={styles.specs} aria-label="Specifications">
             <h2 className={styles.sectionTitle}>SPECIFICATIONS</h2>
             <SpecificationsTable specs={product.specs} />
           </section>
-        </Container>
 
-        {/* Similar */}
-        {product.similarProducts.length > 0 && (
-          <Container>
+          {/* Similar: dentro del mismo Container */}
+          {product.similarProducts.length > 0 && (
             <SimilarProducts
               products={product.similarProducts}
               productId={product.id}
               onCardClick={(id) => navigate(`/product/${id}`)}
             />
-          </Container>
-        )}
+          )}
+        </Container>
       </main>
     </>
   )
