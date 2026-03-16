@@ -62,48 +62,40 @@ $spring-easing: linear(
 }
 
 .page {
-  min-height: calc(100vh - var(--header-height));
-  max-width: var(--layout-content-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-desktop);
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 1024px) {
-    padding: 0 var(--spacing-tablet);
-  }
-
-  @media (max-width: 480px) {
-    padding: 0 var(--spacing-mobile);
-  }
-}
-
-.titleBar {
-  padding: 32px 0 24px;
-  border-bottom: var(--border-width) solid var(--color-border);
+  min-height: calc(100vh - var(--header-height));
   opacity: 0;
   animation: dissolveIn $spring-easing 0.6s forwards;
   animation-delay: 1ms;
 }
 
 .title {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  margin: 0 0 var(--spacing-xl);
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .empty {
+  flex: 1;
   display: flex;
-  justify-content: flex-start;
-  padding: 40px 0;
+  align-items: flex-start;
+  padding-top: var(--spacing-xl);
 }
 
-.itemsArea {
+.itemsList {
   flex: 1;
-  opacity: 0;
-  animation: dissolveIn $spring-easing 0.6s forwards;
-  animation-delay: 50ms;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .itemRow {
@@ -118,28 +110,93 @@ $spring-easing: linear(
 }
 
 .footer {
-  padding: 24px 0 40px;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  opacity: 0;
-  animation: dissolveIn $spring-easing 0.6s forwards;
-  animation-delay: 100ms;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  border-top: var(--border-width) solid var(--color-border);
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .totalRow {
   display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  gap: var(--spacing-lg);
+  flex: 1;
+  justify-content: flex-end;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 300;
   text-transform: uppercase;
-  padding-top: 16px;
-  border-top: var(--border-width) solid var(--color-border);
+  color: var(--color-black);
+
+  @media (max-width: 900px) {
+    justify-content: space-between;
+  }
 }
 
 .actions {
   display: flex;
-  gap: 12px;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+.continueButton {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: var(--border-width) solid var(--color-black);
+  background: transparent;
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 200px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 900px) {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.payButton {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 200px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 900px) {
+    flex: 1;
+    min-width: 0;
+  }
 }

@@ -1,56 +1,54 @@
-.nav {
+.header {
   position: sticky;
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background-color: var(--color-white);
-  border-bottom: var(--border-width) solid var(--color-border);
-
-  @media (max-width: 480px) {
-    height: var(--header-height-mobile);
-  }
+  background: var(--color-white);
+  box-sizing: border-box;
 }
 
 .inner {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   height: 100%;
-  max-width: var(--layout-content-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-desktop);
+}
 
-  @media (max-width: 1024px) {
-    padding: 0 var(--spacing-tablet);
-  }
-
-  @media (max-width: 480px) {
-    padding: 0 var(--spacing-mobile);
-  }
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: none;
 }
 
 .logo {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  color: var(--color-black);
-  text-transform: uppercase;
+  width: 74px;
+  height: 24px;
+  display: block;
 }
 
 .cartLink {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
   text-decoration: none;
   color: var(--color-black);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  flex: none;
+}
+
+.bagInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 0;
+  gap: var(--spacing-xs);
 }
 
 .cartCount {
-  font-size: 13px;
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 300;
+  line-height: 1;
+  text-transform: uppercase;
+  flex: none;
 }

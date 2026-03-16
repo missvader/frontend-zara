@@ -9,10 +9,9 @@ interface PhoneCardProps {
 
 export const PhoneCard = ({ product, onClick }: PhoneCardProps) => {
   const { id, brand, name, basePrice, imageUrl } = product
-  const formattedPrice = `${basePrice.toLocaleString('de-DE')} EUR`
 
   return (
-    <article className={styles.card} aria-label={`${brand} ${name}, from ${basePrice} EUR`}>
+    <article className={styles.card}>
       <button
         type="button"
         className={styles.cardBtn}
@@ -28,9 +27,11 @@ export const PhoneCard = ({ product, onClick }: PhoneCardProps) => {
           />
         </div>
         <div className={styles.info}>
-          <p className={styles.brand}>{brand.toUpperCase()}</p>
-          <p className={styles.name}>{name}</p>
-          <p className={styles.price}>{formattedPrice}</p>
+          <div className={styles.brandName}>
+            <span className={styles.brand}>{brand.toUpperCase()}</span>
+            <span className={styles.name}>{name}</span>
+          </div>
+          <span className={styles.price}>{basePrice.toLocaleString('de-DE')} EUR</span>
         </div>
       </button>
     </article>

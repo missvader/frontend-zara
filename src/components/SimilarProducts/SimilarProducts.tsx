@@ -19,13 +19,15 @@ export const SimilarProducts = ({ products, productId, onCardClick }: SimilarPro
   return (
     <section className={styles.section} aria-label="Similar products">
       <h2 className={styles.title}>SIMILAR ITEMS</h2>
-      <ul ref={scrollRef} className={styles.list}>
-        {products.map((product) => (
-          <li key={product.id} className={styles.item}>
-            <PhoneCard product={product} onClick={onCardClick} />
-          </li>
-        ))}
-      </ul>
+      <div className={styles.carouselWrap}>
+        <ul ref={scrollRef} className={styles.list}>
+          {products.map((product) => (
+            <li key={product.id} className={styles.item}>
+              <PhoneCard product={product} onClick={onCardClick} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }

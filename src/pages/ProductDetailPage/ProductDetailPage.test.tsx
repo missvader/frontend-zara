@@ -19,20 +19,22 @@ const renderPage = (id = mockProductDetail.id) =>
 describe('ProductDetailPage', () => {
   it('renders product name and brand after loading', async () => {
     renderPage()
-    expect(await screen.findByRole('heading', { name: mockProductDetail.name })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') }),
+    ).toBeInTheDocument()
     expect(screen.getByText(mockProductDetail.brand.toUpperCase())).toBeInTheDocument()
   })
 
   it('ADD TO CART is disabled initially', async () => {
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
     expect(screen.getByRole('button', { name: /add to cart/i })).toBeDisabled()
   })
 
   it('ADD TO CART is disabled when only color is selected', async () => {
     const user = userEvent.setup()
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
 
     await user.click(screen.getByRole('button', { name: /select color titanium black/i }))
 
@@ -42,7 +44,7 @@ describe('ProductDetailPage', () => {
   it('ADD TO CART is disabled when only storage is selected', async () => {
     const user = userEvent.setup()
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
 
     await user.click(screen.getByRole('button', { name: /select 256 gb/i }))
 
@@ -52,7 +54,7 @@ describe('ProductDetailPage', () => {
   it('ADD TO CART is enabled when both color and storage are selected', async () => {
     const user = userEvent.setup()
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
 
     await user.click(screen.getByRole('button', { name: /select color titanium black/i }))
     await user.click(screen.getByRole('button', { name: /select 256 gb/i }))
@@ -63,7 +65,7 @@ describe('ProductDetailPage', () => {
   it('price updates when a different storage is selected', async () => {
     const user = userEvent.setup()
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
 
     expect(screen.getByText(/from 1\.319 eur/i)).toBeInTheDocument()
 
@@ -75,7 +77,7 @@ describe('ProductDetailPage', () => {
   it('image updates when a different color is selected', async () => {
     const user = userEvent.setup()
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
 
     const initialSrc = screen
       .getByRole('img', { name: new RegExp(mockProductDetail.name, 'i') })
@@ -94,7 +96,7 @@ describe('ProductDetailPage', () => {
   it('adds item to cart and navigates to /cart on button click', async () => {
     const user = userEvent.setup()
     renderPage()
-    await screen.findByRole('heading', { name: mockProductDetail.name })
+    await screen.findByRole('heading', { name: new RegExp(mockProductDetail.name, 'i') })
 
     await user.click(screen.getByRole('button', { name: /select color titanium black/i }))
     await user.click(screen.getByRole('button', { name: /select 256 gb/i }))

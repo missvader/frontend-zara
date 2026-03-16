@@ -1,54 +1,29 @@
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--border-width);
   list-style: none;
   padding: 0;
   margin: 0;
-
-  @media (min-width: 481px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1025px) {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
+  padding-bottom: var(--spacing-2xl);
 }
 
 .gridLoading {
   opacity: 0.5;
   pointer-events: none;
-  transition: opacity 0.2s ease;
 }
 
-@keyframes gridEnterDesktop {
+.gridEnterOnce {
+  animation: gridEnter 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes gridEnter {
   from {
     opacity: 0;
-    transform: translateX(24px);
+    transform: translateX(1.5rem);
   }
   to {
     opacity: 1;
     transform: translateX(0);
-  }
-}
-
-.gridEnterOnce {
-  animation: gridEnterDesktop 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-@media (max-width: 480px) {
-  @keyframes gridEnterMobile {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .gridEnterOnce {
-    animation: gridEnterMobile 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 }

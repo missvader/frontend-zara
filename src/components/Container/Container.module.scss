@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-x);
+  padding-right: var(--container-padding-x);
+  box-sizing: border-box;
+}
+
+.sizeContent {
+  max-width: var(--layout-content-width);
+}

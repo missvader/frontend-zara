@@ -1,26 +1,52 @@
 .section {
-  padding: 48px 0 0;
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .title {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 0 0 var(--spacing-lg);
+  color: var(--color-black);
+}
+
+.carouselWrap {
+  width: calc(50% + 50vw);
+  margin-left: 0;
+  overflow: hidden;
 }
 
 .list {
   display: flex;
-  gap: var(--border-width);
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 16px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-gray-medium) transparent;
+  padding-top: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  list-style: none;
+  margin: 0;
+
+  &::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-gray-medium);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-black);
+    border-radius: 0;
+  }
 }
 
 .item {
-  flex: 0 0 220px;
+  width: min(260px, 70vw);
+  flex-shrink: 0;
   scroll-snap-align: start;
+  border: var(--border-width) solid var(--color-border);
+  box-sizing: border-box;
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar/Navbar'
-import { Button } from '@/components/Button/Button'
 import { CartItem } from '@/components/CartItem/CartItem'
+import { Container } from '@/components/Container/Container'
 import { useCart } from '@/hooks/useCart'
 import { usePageTitle } from '@/hooks/usePageTitle'
 import styles from './CartPage.module.scss'
@@ -28,20 +28,18 @@ const CartPage = () => {
   return (
     <>
       <Navbar />
-      <main className={styles.page}>
-        <div className={styles.titleBar}>
-          <h1 className={styles.title}>CART ({cart.items.length})</h1>
-        </div>
+      <Container as="main" className={styles.page}>
+        <h1 className={styles.title}>CART ({cart.items.length})</h1>
 
         {cart.items.length === 0 ? (
           <div className={styles.empty}>
-            <Button variant="secondary" onClick={() => navigate('/')}>
+            <button type="button" className={styles.continueButton} onClick={() => navigate('/')}>
               CONTINUE SHOPPING
-            </Button>
+            </button>
           </div>
         ) : (
           <>
-            <ul className={styles.itemsArea}>
+            <ul className={styles.itemsList}>
               {cart.items.map((item) => {
                 const key = `${item.id}-${item.color.name}-${item.storage.capacity}`
                 const isFading = removingId === key
@@ -62,15 +60,21 @@ const CartPage = () => {
                 <span>{totalPrice.toLocaleString('de-DE')} EUR</span>
               </div>
               <div className={styles.actions}>
-                <Button variant="secondary" onClick={() => navigate('/')}>
+                <button
+                  type="button"
+                  className={styles.continueButton}
+                  onClick={() => navigate('/')}
+                >
                   CONTINUE SHOPPING
-                </Button>
-                <Button variant="primary">PAY</Button>
+                </button>
+                <button type="button" className={styles.payButton}>
+                  PAY
+                </button>
               </div>
             </div>
           </>
         )}
-      </main>
+      </Container>
     </>
   )
 }

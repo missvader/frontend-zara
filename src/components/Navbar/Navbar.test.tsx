@@ -14,7 +14,7 @@ const renderNavbar = () =>
 describe('Navbar', () => {
   it('renders the logo with a link to /', () => {
     renderNavbar()
-    const logo = screen.getByRole('link', { name: /smartphones/i })
+    const logo = screen.getByRole('link', { name: /home/i })
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveAttribute('href', '/')
   })
