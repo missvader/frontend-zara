@@ -1,4 +1,5 @@
 import type { ChangeEvent } from 'react'
+import closeIcon from '@/assets/close-small.svg'
 import styles from './SearchBar.module.scss'
 
 interface SearchBarProps {
@@ -28,7 +29,7 @@ export const SearchBar = ({ value, resultCount, onChange, onClear }: SearchBarPr
           onClick={onClear}
           className={styles.clearBtn}
         >
-          ✕
+          <img src={closeIcon} alt="" width={20} height={19} />
         </button>
       )}
     </div>
