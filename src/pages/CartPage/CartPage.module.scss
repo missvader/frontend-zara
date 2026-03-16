@@ -118,12 +118,6 @@ $spring-easing: linear(
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-lg);
-  border-top: var(--border-width) solid var(--color-border);
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    align-items: stretch;
-  }
 }
 
 .totalRow {
@@ -131,25 +125,25 @@ $spring-easing: linear(
   gap: var(--spacing-lg);
   flex: 1;
   justify-content: flex-end;
+  padding-right: 3vw;
   font-family: var(--font-primary);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-md);
   font-weight: 300;
   text-transform: uppercase;
   color: var(--color-black);
 
   @media (max-width: 900px) {
+    order: -1;
+    width: 100%;
+    flex: auto;
     justify-content: space-between;
+    padding-right: 0;
   }
 }
 
 .actions {
   display: flex;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
+  gap: var(--spacing-lg);
 }
 
 .continueButton {
@@ -162,18 +156,20 @@ $spring-easing: linear(
   font-weight: 300;
   text-transform: uppercase;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 260px;
   text-align: center;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     background: var(--color-black);
     color: var(--color-white);
+    opacity: 1;
   }
 
   @media (max-width: 900px) {
-    flex: 1;
     min-width: 0;
+    width: calc(50% - var(--spacing-lg) / 2);
+    padding: var(--spacing-md);
   }
 }
 
@@ -187,7 +183,7 @@ $spring-easing: linear(
   font-weight: 300;
   text-transform: uppercase;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 260px;
   text-align: center;
   transition: all 0.3s ease-in-out;
 
@@ -196,7 +192,8 @@ $spring-easing: linear(
   }
 
   @media (max-width: 900px) {
-    flex: 1;
     min-width: 0;
+    width: calc(50% - var(--spacing-lg) / 2);
+    padding: var(--spacing-md);
   }
 }

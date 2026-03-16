@@ -3,7 +3,6 @@
   gap: var(--spacing-lg);
   align-items: stretch;
   padding: var(--spacing-lg) 0;
-  border-bottom: var(--border-width) solid var(--color-border-light);
 
   @media (min-width: 600px) {
     gap: var(--spacing-2xl);

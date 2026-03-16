@@ -32,48 +32,41 @@ const CartPage = () => {
         <h1 className={styles.title}>CART ({cart.items.length})</h1>
 
         {cart.items.length === 0 ? (
-          <div className={styles.empty}>
-            <button type="button" className={styles.continueButton} onClick={() => navigate('/')}>
-              CONTINUE SHOPPING
-            </button>
-          </div>
+          <div className={styles.empty} />
         ) : (
-          <>
-            <ul className={styles.itemsList}>
-              {cart.items.map((item) => {
-                const key = `${item.id}-${item.color.name}-${item.storage.capacity}`
-                const isFading = removingId === key
-                return (
-                  <li key={key} className={`${styles.itemRow} ${isFading ? styles.fadeOut : ''}`}>
-                    <CartItem
-                      item={item}
-                      onRemove={() => handleRemove(item.id, item.color.name, item.storage.capacity)}
-                    />
-                  </li>
-                )
-              })}
-            </ul>
+          <ul className={styles.itemsList}>
+            {cart.items.map((item) => {
+              const key = `${item.id}-${item.color.name}-${item.storage.capacity}`
+              const isFading = removingId === key
+              return (
+                <li key={key} className={`${styles.itemRow} ${isFading ? styles.fadeOut : ''}`}>
+                  <CartItem
+                    item={item}
+                    onRemove={() => handleRemove(item.id, item.color.name, item.storage.capacity)}
+                  />
+                </li>
+              )
+            })}
+          </ul>
+        )}
 
-            <div className={styles.footer}>
+        <footer className={styles.footer}>
+          <button type="button" className={styles.continueButton} onClick={() => navigate('/')}>
+            CONTINUE SHOPPING
+          </button>
+
+          {cart.items.length > 0 && (
+            <>
               <div className={styles.totalRow}>
                 <span>TOTAL</span>
                 <span>{totalPrice.toLocaleString('de-DE')} EUR</span>
               </div>
-              <div className={styles.actions}>
-                <button
-                  type="button"
-                  className={styles.continueButton}
-                  onClick={() => navigate('/')}
-                >
-                  CONTINUE SHOPPING
-                </button>
-                <button type="button" className={styles.payButton}>
-                  PAY
-                </button>
-              </div>
-            </div>
-          </>
-        )}
+              <button type="button" className={styles.payButton}>
+                PAY
+              </button>
+            </>
+          )}
+        </footer>
       </Container>
     </>
   )
