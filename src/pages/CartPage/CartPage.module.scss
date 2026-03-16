@@ -112,9 +112,9 @@ $spring-easing: linear(
 /* ─── Footer ─────────────────────────────────────────── */
 
 /*
-  Tablet/desktop (≥600px):
+  Tablet/desktop (≥768px):
     [ Continue ]     [ TOTAL  1099 EUR ]  [ PAY ]
-  Mobile (<600px):
+  Mobile (<768px):
     [ TOTAL              1099 EUR ]
     [ Continue Shopping ] [ PAY  ]
 */
@@ -156,7 +156,7 @@ $spring-easing: linear(
     color: var(--color-white);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     flex: 1;
     width: auto;
     min-width: 0;
@@ -179,7 +179,7 @@ $spring-easing: linear(
   color: var(--color-black);
   flex-shrink: 0;
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     order: -1;
     width: 100%;
     justify-content: space-between;
@@ -211,7 +211,7 @@ $spring-easing: linear(
     opacity: 0.8;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     flex: 1;
     width: auto;
     min-width: 0;
