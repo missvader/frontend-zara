@@ -3,6 +3,7 @@ import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { PhoneGrid } from '@/components/PhoneGrid/PhoneGrid'
 import { AppLoading } from '@/components/AppLoading/AppLoading'
 import { ErrorMessage } from '@/components/ErrorMessage/ErrorMessage'
+import { Container } from '@/components/Container/Container'
 import { useProductListController } from './ProductListPage.controller'
 import styles from './ProductListPage.module.scss'
 
@@ -25,13 +26,17 @@ const ProductListPage = () => {
     <>
       <Navbar />
       <main className={styles.page}>
-        <SearchBar
-          value={inputValue}
-          resultCount={resultCount}
-          onChange={handleSearch}
-          onClear={handleClear}
-        />
-        <PhoneGrid products={products} isLoading={isLoading} onCardClick={handleCardClick} />
+        <Container className={styles.searchContainer}>
+          <SearchBar
+            value={inputValue}
+            resultCount={resultCount}
+            onChange={handleSearch}
+            onClear={handleClear}
+          />
+        </Container>
+        <Container>
+          <PhoneGrid products={products} isLoading={isLoading} onCardClick={handleCardClick} />
+        </Container>
       </main>
     </>
   )

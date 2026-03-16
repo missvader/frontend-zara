@@ -2,16 +2,23 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  height: var(--header-height);
+  background: var(--color-white);
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    height: var(--header-height-mobile);
+  }
+}
+
+/* Container gestiona el padding y max-width */
+/* Solo añadir lo que Container no puede gestionar solo */
+.inner {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 24px var(--spacing-desktop);
-  gap: 20px;
-  width: 100%;
-  height: var(--header-height);
-  background: var(--color-white);
-  box-sizing: border-box;
+  height: 100%;
 }
 
 .logoLink {
@@ -51,17 +58,4 @@
   margin-top: 1px;
   text-transform: uppercase;
   flex: none;
-}
-
-@media (max-width: 1024px) {
-  .header {
-    padding: 24px var(--spacing-tablet);
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    padding: 24px var(--spacing-mobile);
-    height: var(--header-height-mobile);
-  }
 }

@@ -1,39 +1,48 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px 0;
-  border-bottom: var(--border-width) solid var(--color-border);
+  gap: 12px;
+  padding: 12px 0;
+  background: var(--color-white);
 }
 
 .inputRow {
-  position: relative;
   display: flex;
+  height: 27px;
+  padding-bottom: 8px;
   align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  border-bottom: var(--border-width) solid var(--color-black);
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.inputRow:focus-within {
+  border-bottom-color: var(--color-black-secondary);
+  transform: translateY(-1px);
 }
 
 .input {
   width: 100%;
   border: none;
-  border-bottom: var(--border-width) solid var(--color-black);
-  padding: 8px 32px 8px 0;
-  font-size: 16px;
-  background: transparent;
-  color: var(--color-black);
   outline: none;
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-black);
+  padding: 0;
+}
 
-  &::placeholder {
-    color: var(--color-gray-text);
-  }
-
-  &:focus {
-    border-bottom-width: 1px;
-  }
+.input::placeholder {
+  color: #aaaaaa;
+  opacity: 1;
 }
 
 .clearBtn {
-  position: absolute;
-  right: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -41,16 +50,16 @@
   color: var(--color-gray-text);
   padding: 4px;
   line-height: 1;
-
-  @media (hover: hover) {
-    &:hover {
-      color: var(--color-black);
-    }
-  }
+  flex-shrink: 0;
 }
 
 .count {
+  color: var(--color-black);
+  font-family: var(--font-primary);
   font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--color-gray-text);
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 0;
 }

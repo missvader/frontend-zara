@@ -1,13 +1,33 @@
 .page {
-  max-width: var(--layout-content-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-desktop);
+  padding-top: 48px;
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  animation: listFadeIn 0.5s ease-out forwards;
+}
 
-  @media (max-width: 1024px) {
-    padding: 0 var(--spacing-tablet);
+@keyframes listFadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
 
-  @media (max-width: 480px) {
-    padding: 0 var(--spacing-mobile);
+/* El Container del SearchBar es sticky */
+.searchContainer {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 90;
+  background: var(--color-white);
+}
+
+@media (max-width: 480px) {
+  .page {
+    gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 }

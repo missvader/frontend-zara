@@ -27,10 +27,10 @@ export const PhoneCard = ({ product, onClick }: PhoneCardProps) => {
       </div>
       <div className={styles.info}>
         <div className={styles.brandName}>
-          <div className={styles.brand}>{brand}</div>
+          <div className={styles.brand}>{brand.toUpperCase()}</div>
           <div className={styles.name}>{name}</div>
         </div>
-        <div className={styles.price}>{basePrice} EUR</div>
+        <div className={styles.price}>{basePrice.toLocaleString('de-DE')} EUR</div>
       </div>
     </button>
   )

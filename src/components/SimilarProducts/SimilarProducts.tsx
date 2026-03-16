@@ -21,7 +21,7 @@ export const SimilarProducts = ({ products, productId, onCardClick }: SimilarPro
       <h2 className={styles.title}>SIMILAR ITEMS</h2>
       <ul ref={scrollRef} className={styles.list}>
         {products.map((product) => (
-          <li key={product.id} className={styles.item}>
+          <li key={product.id} role="article" className={styles.item}>
             <PhoneCard product={product} onClick={onCardClick} />
           </li>
         ))}
