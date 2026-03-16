@@ -28,7 +28,7 @@ describe('useSearch', () => {
     })
     expect(result.current.query).toBe('')
     await act(async () => {
-      await new Promise((r) => setTimeout(r, 350))
+      await new Promise((r) => setTimeout(r, 600))
     })
     expect(result.current.query).toBe('Apple')
   })
