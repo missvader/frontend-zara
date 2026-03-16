@@ -51,4 +51,19 @@
   /* Container — igual que la referencia */
   --container-padding-x: 5.2%;
   --container-max-width: 1720px;
+
+  /* Botones — dimensiones estándar */
+  --button-height-md: 48px;
+  --button-min-width-sm: 200px;
+  --button-min-width-md: 260px;
+  --button-padding-y: 20px;
+  --letter-spacing-wide: 0.08em;
+
+  /* Breakpoints 2026 — mobile-first */
+  /* Usar como referencia en los módulos SCSS:
+     --bp-sm:  480px  → mobile portrait
+     --bp-md:  768px  → mobile landscape / tablet
+     --bp-lg:  1024px → tablet portrait / laptop
+     --bp-xl:  1440px → desktop grande
+  */
 }

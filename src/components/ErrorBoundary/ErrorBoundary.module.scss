@@ -3,11 +3,11 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: var(--spacing-mobile);
+  padding: var(--spacing-md);
 }
 
 .message {
-  font-size: 16px;
+  font-size: var(--font-size-lg);
   color: var(--color-error);
   text-align: center;
 }

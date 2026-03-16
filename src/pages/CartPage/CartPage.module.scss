@@ -109,94 +109,120 @@ $spring-easing: linear(
   transform: scale(0.9);
 }
 
+/* ─── Footer ─────────────────────────────────────────── */
+
+/*
+  Tablet/desktop (≥768px):
+    [ Continue ]     [ TOTAL  1099 EUR ]  [ PAY ]
+  Mobile (<768px):
+    [ TOTAL              1099 EUR ]
+    [ Continue Shopping ] [ PAY  ]
+*/
+
 .footer {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-lg);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-lg);
-  border-top: var(--border-width) solid var(--color-border);
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  align-items: center;
+  padding: var(--spacing-lg) 0 var(--spacing-2xl);
+  row-gap: var(--spacing-lg);
+  column-gap: var(--spacing-sm);
 }
 
-.totalRow {
-  display: flex;
-  gap: var(--spacing-lg);
-  flex: 1;
-  justify-content: flex-end;
-  font-family: var(--font-primary);
-  font-size: var(--font-size-base);
-  font-weight: 300;
-  text-transform: uppercase;
-  color: var(--color-black);
-
-  @media (max-width: 900px) {
-    justify-content: space-between;
-  }
-}
-
-.actions {
-  display: flex;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
-}
-
+/* Continue Shopping — izquierda en tablet, 50% en mobile */
 .continueButton {
-  padding: var(--spacing-md) var(--spacing-xl);
-  border: var(--border-width) solid var(--color-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--button-padding-y) var(--spacing-xl);
+  width: var(--button-min-width-sm);
+  height: var(--button-height-md);
+  border: var(--border-width) solid var(--color-black-secondary);
   background: transparent;
   color: var(--color-black);
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
   font-weight: 300;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   cursor: pointer;
-  min-width: 200px;
-  text-align: center;
   transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
 
   &:hover {
     background: var(--color-black);
     color: var(--color-white);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
+    /* bp-md */
     flex: 1;
+    width: auto;
     min-width: 0;
+    padding: var(--button-padding-y) var(--spacing-md);
+    order: 2;
   }
 }
 
+/* Total — centro en tablet, primera fila en mobile */
+.totalRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--color-black);
+  flex-shrink: 0;
+  flex: 1;
+  justify-content: flex-end;
+  padding-right: 3vw;
+
+  @media (max-width: 768px) {
+    /* bp-md */
+    order: -1;
+    width: 100%;
+    flex: auto;
+    justify-content: space-between;
+    padding-right: 0;
+  }
+}
+
+/* Pay — derecha en tablet, 50% en mobile */
 .payButton {
-  padding: var(--spacing-md) var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--button-padding-y) var(--spacing-xl);
+  width: var(--button-min-width-md);
+  height: var(--button-height-md);
   border: none;
-  background: var(--color-black);
+  background: var(--color-black-secondary);
   color: var(--color-white);
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
   font-weight: 300;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   cursor: pointer;
-  min-width: 200px;
-  text-align: center;
   transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
 
   &:hover {
     opacity: 0.8;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
+    /* bp-md */
     flex: 1;
+    width: auto;
     min-width: 0;
+    padding: var(--button-padding-y) var(--spacing-md);
+    order: 3;
   }
 }
