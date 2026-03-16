@@ -1,23 +1,36 @@
 .loadingBar {
   position: sticky;
   top: var(--header-height);
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--color-black) 0%,
-    var(--color-gray-medium) 50%,
-    var(--color-black) 100%
-  );
-  background-size: 200% 100%;
-  animation: loadingSlide 1.2s linear infinite;
   z-index: 99;
+  width: 100%;
+  max-width: var(--layout-max-width);
+  height: 1px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  pointer-events: none;
 }
 
-@keyframes loadingSlide {
+.loadingBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 35%;
+  background: var(--color-black);
+  transform: translateX(-120%);
+  animation: loadingBarMove 900ms ease-in-out infinite;
+}
+
+@keyframes loadingBarMove {
   0% {
-    background-position: 200% 0;
+    transform: translateX(-120%);
+  }
+  60% {
+    transform: translateX(320%);
   }
   100% {
-    background-position: -200% 0;
+    transform: translateX(320%);
   }
 }

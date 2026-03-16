@@ -5,13 +5,13 @@ import { renderWithProviders } from '@/test/render'
 import { AppLoading } from './AppLoading'
 
 describe('AppLoading', () => {
-  it('renders the Navbar navigation', () => {
+  it('renders the Navbar', () => {
     renderWithProviders(
       <MemoryRouter>
         <AppLoading />
       </MemoryRouter>,
     )
-    expect(screen.getByRole('navigation')).toBeInTheDocument()
+    expect(screen.getByRole('banner')).toBeInTheDocument()
   })
 
   it('renders the loading progress bar', () => {
