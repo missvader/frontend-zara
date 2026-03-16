@@ -125,9 +125,9 @@ $spring-easing: linear(
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0 40px;
-  row-gap: 24px;
-  column-gap: 12px;
+  padding: var(--spacing-lg) 0 var(--spacing-2xl);
+  row-gap: var(--spacing-lg);
+  column-gap: var(--spacing-sm);
 }
 
 /* Continue Shopping — izquierda en tablet, 50% en mobile */
@@ -135,17 +135,17 @@ $spring-easing: linear(
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 32px;
-  width: 200px;
-  height: 48px;
-  border: 0.5px solid #1b1a18;
+  padding: var(--button-padding-y) var(--spacing-xl);
+  width: var(--button-min-width-sm);
+  height: var(--button-height-md);
+  border: var(--border-width) solid var(--color-black-secondary);
   background: transparent;
   color: var(--color-black);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  line-height: 16px;
-  letter-spacing: 0.08em;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -157,10 +157,11 @@ $spring-easing: linear(
   }
 
   @media (max-width: 768px) {
+    /* bp-md */
     flex: 1;
     width: auto;
     min-width: 0;
-    padding: 20px 16px;
+    padding: var(--button-padding-y) var(--spacing-md);
     order: 2;
   }
 }
@@ -170,16 +171,16 @@ $spring-easing: linear(
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
+  gap: var(--spacing-lg);
   font-family: var(--font-primary);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
+  font-size: var(--font-size-md);
+  font-weight: 300;
   text-transform: uppercase;
   color: var(--color-black);
   flex-shrink: 0;
 
   @media (max-width: 768px) {
+    /* bp-md */
     order: -1;
     width: 100%;
     justify-content: space-between;
@@ -191,17 +192,17 @@ $spring-easing: linear(
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 32px;
-  width: 260px;
-  height: 48px;
+  padding: var(--button-padding-y) var(--spacing-xl);
+  width: var(--button-min-width-md);
+  height: var(--button-height-md);
   border: none;
-  background: #1b1a18;
+  background: var(--color-black-secondary);
   color: var(--color-white);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-size-base);
   font-weight: 300;
-  line-height: 16px;
-  letter-spacing: 0.08em;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -212,10 +213,11 @@ $spring-easing: linear(
   }
 
   @media (max-width: 768px) {
+    /* bp-md */
     flex: 1;
     width: auto;
     min-width: 0;
-    padding: 20px 16px;
+    padding: var(--button-padding-y) var(--spacing-md);
     order: 3;
   }
 }
