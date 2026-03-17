@@ -1,4 +1,4 @@
-# Mobile phone catalogue SPA
+# Zara Frontend Challenge — Mobile Phone Catalogue
 
 A mobile phone catalogue single-page application with product listing, real-time search, detail view, and a persistent shopping cart. Built with React 18, TypeScript, and TanStack Query.
 
