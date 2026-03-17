@@ -65,6 +65,12 @@ describe('CartPage', () => {
     expect(screen.getByRole('button', { name: /continue shopping/i })).toBeInTheDocument()
   })
 
+  it('PAY button is present when there are items', () => {
+    seedCart()
+    renderPage()
+    expect(screen.getByRole('button', { name: /pay/i })).toBeInTheDocument()
+  })
+
   describe('with items', () => {
     beforeEach(() => seedCart())
 
@@ -106,6 +112,14 @@ describe('CartPage', () => {
       await user.click(screen.getByRole('button', { name: /continue shopping/i }))
 
       expect(await screen.findByText('Home page')).toBeInTheDocument()
+    })
+
+    it('applies fadeOut class before removing item from DOM', async () => {
+      const user = userEvent.setup()
+      renderPage()
+      await user.click(screen.getByRole('button', { name: /remove galaxy s24 ultra from cart/i }))
+      const li = screen.getByText('Galaxy S24 Ultra').closest('li')
+      expect(li).toHaveClass('fadeOut')
     })
   })
 })

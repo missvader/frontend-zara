@@ -1,8 +1,10 @@
 import { describe, it, expect } from 'vitest'
-import { screen, waitFor } from '@testing-library/react'
+import { screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
+import { http, HttpResponse } from 'msw'
 import { renderWithProviders } from '@/test/render'
+import { server } from '@/mocks/server'
 import ProductListPage from './ProductListPage'
 
 const renderPage = () =>
@@ -58,5 +60,32 @@ describe('ProductListPage', () => {
     await user.click(screen.getByRole('button', { name: /clear search/i }))
 
     await waitFor(() => expect(screen.getAllByRole('article')).toHaveLength(20))
+  })
+
+  it('navigates to /product/:id on card click', async () => {
+    const user = userEvent.setup()
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<ProductListPage />} />
+          <Route path="/product/:id" element={<div>Product detail page</div>} />
+        </Routes>
+      </MemoryRouter>,
+    )
+    const cards = await screen.findAllByRole('article')
+    await user.click(within(cards[0]).getByRole('button'))
+    expect(screen.getByText('Product detail page')).toBeInTheDocument()
+  })
+
+  it('shows loading state while fetching', () => {
+    renderPage()
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+
+  it('shows error message when API fails', async () => {
+    server.use(http.get('*/products', () => HttpResponse.error()))
+    renderPage()
+    const alert = await screen.findByRole('alert')
+    expect(alert).toHaveTextContent(/failed to load products/i)
   })
 })
