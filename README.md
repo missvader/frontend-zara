@@ -19,7 +19,7 @@ A mobile phone catalogue single-page application with product listing, real-time
 | Styling             | SCSS Modules + CSS custom properties | Scoped styles, nesting support, design tokens via variables — no runtime cost                                                                                                                  |
 | Testing             | Vitest + React Testing Library + MSW | Fast, Jest-compatible API. MSW intercepts at the network level — tests exercise the real fetch path                                                                                            |
 | Linting             | ESLint + Prettier                    | Required by the challenge. Enforced on every commit via Husky + lint-staged                                                                                                                    |
-| Node version        | 18                                   | Required by the challenge                                                                                                                                                                      |
+| Node version        | 20                                   | The challenge references Node 18, which reached end of life in April 2025. Vitest 4.x requires Node 20+ (`node:util.styleText`, introduced in 20.1.0)                                          |
 
 ## Architecture decisions
 
@@ -53,7 +53,7 @@ src/
 
 ## Getting started
 
-**Prerequisites:** Node 18 (see `.nvmrc`).
+**Prerequisites:** Node 20 (see `.nvmrc`).
 
 ```bash
 # Install dependencies
