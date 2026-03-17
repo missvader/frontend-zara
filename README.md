@@ -4,7 +4,7 @@ A mobile phone catalogue single-page application with product listing, real-time
 
 ## Live demo
 
-**Live demo:** _deploy pending_
+**Live demo:** https://frontend-zara-woad.vercel.app
 
 ## Tech stack
 
@@ -92,6 +92,32 @@ Tests follow a risk-first approach rather than a line-coverage target. The cart 
 | `components/`         | 100%     |
 | `pages/`              | 97%      |
 | Overall               | 97%      |
+
+## CI/CD
+
+The pipeline runs on every push and pull request to `main` via GitHub Actions (`.github/workflows/ci.yml`).
+
+**Steps, in order:**
+
+1. Check out the repository and set up Node using the version in `.nvmrc`
+2. `npm ci` — clean install from the lock file
+3. `npm run lint` — ESLint with `--max-warnings 0`
+4. `npm run format:check` — Prettier in check mode
+5. `npm run test:run` — full test suite via Vitest
+6. `npm run build` — production build via Vite
+
+Lint and format run before tests deliberately: a formatting issue should fail fast without spending time on a full test run.
+
+The pipeline has no deploy step. Deployment is handled by Vercel, which triggers automatically on push to `main` via its GitHub integration.
+
+**Required repository secrets** (Settings → Secrets and variables → Actions):
+
+| Secret              | Used in                |
+| ------------------- | ---------------------- |
+| `VITE_API_BASE_URL` | `test:run` and `build` |
+| `VITE_API_KEY`      | `test:run` and `build` |
+
+Both are needed at test time because MSW matches handlers against the URL constructed from `VITE_API_BASE_URL`. Without the variable, the fetch goes to `undefined/products` and no handler intercepts it.
 
 ## Accessibility
 
